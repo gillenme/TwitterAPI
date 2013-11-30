@@ -1,4 +1,7 @@
 from twython import Twython
+import csv, json
+
+#The following are the keys that are created when you register your app through Twitter.
 
 APP_KEY = 'sYKvYkH7Em9XGQyoT0LCw'
 APP_SECRET = 'BEPRFgO3jKqIJ7CcFki9mCZbS8eXfoJJvpHkg8t3Uk'
