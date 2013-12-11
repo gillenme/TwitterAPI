@@ -14,6 +14,12 @@ What is an API?
 
 An API ('application programming interface') specifies how some software components should interact with each other. In the case of Twitter, the API stands between the user needing specific information and the actual information itself. Twitter and its users privacy rights are the heart of this. Before beginning any work with the Twitter API, you should familiarize yourself with Twitter's developer rules found here https://dev.twitter.com/terms/api-terms. 
 
+Twitter uses two separate APIs, the REST API and the Streaming API. The REST API lets you query or modify a user's account. You don't need their permission to query their account, but you do need it to modify their account. They provide permission through OAuth authentication.
+
+The Streaming API delivers tweets based on search terms or for specific users you request, along with information about the author, in real-time. You do not need the tweet author's permission. You must log into some Twitter account to use streaming, using either basic or OAuth authentication. The Streaming API also favors real-time delivery.
+
+For the purposes of this project, we will be using the Streaming API. 
+
 Preparation
 ---
 
@@ -81,10 +87,10 @@ OAUTH_TOKEN_SECRET = '1234567890'
 
 Now obviously '1234567890' isn't the actual code you need for the script to work, it's simply a placeholder. Refer back to your My Applications page on the Twitter Developer page. The naming Twitter uses for these authorization codes is a little confusing, but to make it easier:
 
-APP_KEY = Consumer Key
-APP_SECRET = Consumer Secret
-OAUTH_TOKEN = Access Token
-OAUTH_TOKEN_SECRET = Access Token Secret.
+APP_KEY = Consumer Key<br>
+APP_SECRET = Consumer Secret<br>
+OAUTH_TOKEN = Access Token<br>
+OAUTH_TOKEN_SECRET = Access Token Secret
 
 Simply replace '1234567890' with the keys that correspond. You will need the single quotation marks to offset the key, so don't leave them out.
 
@@ -96,3 +102,9 @@ twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET, oauth_ve
 ACCESS_TOKEN = twitter.obtain_access_token()
 twitter = Twython(access_token=ACCESS_TOKEN)
 ```
+ 
+These commands tell the API where to look for the information and to pull the corresponding keys down so that it can grant you access.
+
+Now is a good time to save and run your script. If all goes well... Nothing will happen. If you have an error, check your code again. A single typo can ruin everything, so make sure your code is good and your keys are accurate!
+
+Now it's time to add in some true functionality. We'll start with a very basic search. 
