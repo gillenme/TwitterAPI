@@ -124,19 +124,27 @@ Within the terminal, the text from 15 results from the search will be printed. T
 Finally, we want to be able to save these results and refer back to them. While we can't distribute them according to the Twitter TOS, we are allowed to save them for our own personal uses. In order to do this, we need to write our results to a file. Here, we'll be using CSV for its simplicity and use in other applications such as Text Mining programs like LightSIDE and Weka.
 
 ```python
-#Open the CSV file. 'data.csv' can be renamed to whatever you would like. This is the filename it will save under.
-
 with open ('data.csv', 'w') as fp:
 	a = csv.writer(fp)
-	
-#At the top of the CSV file, we want to add in a row with columns labeled 'Search Term' and 'Tweet Text'.
+#Open the CSV file. 'data.csv' can be renamed to whatever you would like. This is the filename it will save under.
 
 	a.writerow(('Search Term', 'Tweet Text'))
 	
-#For every result we pulled earlier, we want to print the search term attached to it as well as the text, making sure that it is in UTF-8 encoding so special characters will print and not return an error.
-
+#At the top of the CSV file, we want to add in a row with columns labeled 'Search Term' and 'Tweet Text'.
+	
 	for result in results['statuses']:
 		text=[[searchterm, result['text'].encode('utf-8)]]
 		a.writerows((text))
+#For every result we pulled earlier, we want to print the search term attached to it as well as the text, making sure that it is in UTF-8 encoding so special characters will print and not return an error.
 ```
-		
+
+Test out your script. If everything goes well, you should not only see the results from your search within the terminal, but they should also print out into a CSV file.
+
+Conclusion
+---
+
+This is a very basic Python script to query the Twitter API. While this script focuses on retrieving results based on a search term, it can be tailored for your own needs. Check out the `endpoints.py` file in the Twython folder as well as the many available resources online.
+
+If you find any mistakes or things that are unclear in this readme or in the script, please let me know. This is my first time working with Python and while this project is very simple, it took a while to get my bearings and I would appreciate the feedback.
+
+Thank you!
