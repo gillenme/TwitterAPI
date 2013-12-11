@@ -17,8 +17,51 @@ An API ('application programming interface') specifies how some software compone
 Preparation
 ---
 
+<i>Getting Authorization</i>
+
+Twitter requires that users querying the API register their 'apps', or projects in order to receive the authorization codes necessary for using the API. You will need a Twitter account in order to do this so sign up if you don't have one! Go to https://dev.twitter.com and log in. From there, go to https://dev.twitter.com/apps/new and fill out the form. 
+
+Once you've gotten approval, you will be assigned the necessary authorization codes. These can be found by navigating to Your Applications and clicking the appropriate one. Keep these handy for later.
+
+<i>Set Up</i>
+
 In order to use the Twitter API, we will need to write a script that can query for exactly what we need. For the purposes of this project, our script will be written in Python, but other languages can be used as well, including C++, Java, JavaScript, Perl, PHP, etc. 
 
 In order to write a script, we are going to need some help. This is where Twitter Libraries come in handy. While we could write a Python script to directly interact with the Twitter API, it is much simpler to use a library. Libraries define the various ways to query the Twitter API in their code and simplify the language and process. In simpler terms, we will write our Python script in the language used by the library and the library will translate this into the language necessary for the Twitter API to react. 
 
-There are loads of libraries out on the web for use. A starting list can be found here: https://dev.twitter.com/docs/twitter-libraries. This project uses Twython ('https://github.com/ryanmcgrath/twython') because of its ease of use, stellar documentation and frequent and responsive updates  
+There are loads of libraries out on the web for use. A starting list can be found here: https://dev.twitter.com/docs/twitter-libraries. This project uses Twython ('https://github.com/ryanmcgrath/twython') because of its ease of use, stellar documentation and frequent and responsive updates.
+
+Getting Started
+---
+
+We'll be using the Ubuntu terminal to both write and run our Python script. You can either find a computer with Ubuntu already installed or use your own with a Virtual Machine and then installing Ubuntu. (http://www.ubuntu.com/download/desktop/install-desktop-latest) If you're unfamiliar with Ubuntu and/or Linux, you're going to want to study up a bit as this project won't get into how to use it. For the most part, we'll be using simple commands such as `cd`, `ls` and `nano.` A nice review can be found here: https://help.ubuntu.com/community/UsingTheTerminal. 
+
+To begin, get the terminal up and running. The first thing we need to do is install the Twython library on our machine. 
+(<i>Keep in mind the following is also documented by the Twython developers themselves (http://twython.readthedocs.org/en/latest/), though there are some small differences between the code below and theirs.</i>)
+
+```python
+sudo pip install twython
+```
+That's it for installing Twython! Easy. We're using `sudo` here because `sudo` allows a permitted user to execute a command as the superuser or another user. This simply guarantees we'll be able to install what we need.
+ 
+Familiarize yourself with the contents of the twython file now installed on your machine. Twython has some neat features that they've documented for building your script. They can be found in the `endpoints.py` file in the `twython/twython` directory. These will be helpful for you later as we won't go into all of the various options available to you for querying when writing the script. 
+
+Writing the Code
+---
+
+Twython's own documentation is going to be a great asset for you when writing or editing your script. Their step-by-step process is outlined here: http://twython.readthedocs.org/en/latest/
+
+To begin our script, we need to open a blank file. In the terminal, type:
+
+```python
+nano
+```
+
+This will open a blank file. The first thing we need to do is import our settings to the script. This will tell it what programs to run and how to process information.
+
+```python
+from twython import Twython
+import csv, json
+
+# Here we are importing the Twython library we previously installed. We are also importing the csv and json programs so we can later save the data we're gathering from Twitter into an easy-to-read and use Excel file.
+```
