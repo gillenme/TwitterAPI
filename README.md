@@ -63,12 +63,35 @@ This will open a blank file. The first thing we need to do is import our setting
 from twython import Twython
 import csv, json
 
-# Here we are importing the Twython library we previously installed.
-We are also importing the csv and json programs so we can later save 
-the data we're gathering from Twitter into an easy-to-read and use Excel file.
+# Here we are importing the Twython library we previously installed. We are also importing the csv and json programs so we can later save the data we're gathering from Twitter into an easy-to-read and use Excel file.
 ```
 
 Make sure you save frequently. In fact, let's do it now. Ctrl+O is the command to save in Ubuntu. It will prompt you name your file, so let's name it `api.py`. The `.py` lets the machine know what language we're using and will also color code various commands for easier reading.
 
 If you want to test your script from time to time, you will need to exit the nano file by using Ctrl+X. This will put you back in the terminal. From there, you'll type `python api.py` and the script will either run (sucess!) or fail (boo!). The easiest way to constantly edit and test will be to have two terminals open, one running nano and containing the python script and the other open to the basic terminal. However, you are free to do whatever works best for you!
 
+In order to query the Twitter API, we have to provide it with our authorization codes from before. In your script, type the following: 
+
+```python
+APP_KEY = '1234567890'
+APP_SECRET = '1234567890'
+OAUTH_TOKEN = '1234567890'
+OAUTH_TOKEN_SECRET = '1234567890'
+```
+
+Now obviously '1234567890' isn't the actual code you need for the script to work, it's simply a placeholder. Refer back to your My Applications page on the Twitter Developer page. The naming Twitter uses for these authorization codes is a little confusing, but basically:
+
+APP_KEY = Consumer Key
+APP_SECRET = Consumer Secret
+OAUTH_TOKEN = Access Token
+OAUTH_TOKEN_SECRET = Access Token Secret.
+
+Simply replace '1234567890' with the keys that correspond. You will need the single quotation marks to offset the key, so don't leave them out.
+
+
+```python
+twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET, oauth_version=2)
+
+ACCESS_TOKEN = twitter.obtain_access_token()
+twitter = Twython(access_token=ACCESS_TOKEN)
+```
