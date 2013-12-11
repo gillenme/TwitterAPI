@@ -12,6 +12,13 @@ Twitter is an online social networking and microblogging website that allows use
 What is an API?
 ---
 
-An API ('application programming interface') specifies how some software components should interact with each other. In the case of Twitter, the API stands between the user needing specific information and the actual information itself. Twitter and its users privacy rights are the heart of this. 
+An API ('application programming interface') specifies how some software components should interact with each other. In the case of Twitter, the API stands between the user needing specific information and the actual information itself. Twitter and its users privacy rights are the heart of this. Before beginning any work with the Twitter API, you should familiarize yourself with Twitter's developer rules found here https://dev.twitter.com/terms/api-terms. 
 
-Before beginning any work with the Twitter API, you should familiarize yourself with Twitter's developer rules found here https://dev.twitter.com/terms/api-terms. 
+Preparation
+---
+
+In order to use the Twitter API, we will need to write a script that can query for exactly what we need. For the purposes of this project, our script will be written in Python, but other languages can be used as well, including C++, Java, JavaScript, Perl, PHP, etc. 
+
+In order to write a script, we are going to need some help. This is where Twitter Libraries come in handy. While we could write a Python script to directly interact with the Twitter API, it is much simpler to use a library. Libraries define the various ways to query the Twitter API in their code and simplify the language and process. In simpler terms, we will write our Python script in the language used by the library and the library will translate this into the language necessary for the Twitter API to react. 
+
+There are loads of libraries out on the web for use. A starting list can be found here: https://dev.twitter.com/docs/twitter-libraries. This project uses Twython ('https://github.com/ryanmcgrath/twython') because of its ease of use, stellar documentation and frequent and responsive updates  
