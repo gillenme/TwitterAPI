@@ -14,11 +14,9 @@ What is an API?
 
 An API ('application programming interface') specifies how some software components should interact with each other. In the case of Twitter, the API stands between the user needing specific information and the actual information itself. Twitter and its users privacy rights are the heart of this. Before beginning any work with the Twitter API, you should familiarize yourself with Twitter's developer rules found here https://dev.twitter.com/terms/api-terms. 
 
-Twitter uses two separate APIs, the REST API and the Streaming API. The REST API lets you query or modify a user's account. You don't need their permission to query their account, but you do need it to modify their account. They provide permission through OAuth authentication.
+Twitter uses two separate APIs, the REST API and the Streaming API. Both require authorization in order to use them. The REST API lets you query or modify a user's account. They provide permission through OAuth authentication. The Streaming API delivers tweets based on search terms or for specific users you request, along with information about the author, in real-time. The Streaming API also favors real-time delivery.
 
-The Streaming API delivers tweets based on search terms or for specific users you request, along with information about the author, in real-time. You do not need the tweet author's permission. You must log into some Twitter account to use streaming, using either basic or OAuth authentication. The Streaming API also favors real-time delivery.
-
-For the purposes of this project, we will be using the Streaming API. 
+For the purposes of this project, we will be using the REST API because of its robustness. However, said robustness also requires further authorization versus the Streaming API, but we will cover this in the Writing the Code section.
 
 Preparation
 ---
@@ -107,4 +105,15 @@ These commands tell the API where to look for the information and to pull the co
 
 Now is a good time to save and run your script. If all goes well... Nothing will happen. If you have an error, check your code again. A single typo can ruin everything, so make sure your code is good and your keys are accurate!
 
-Now it's time to add in some true functionality. We'll start with a very basic search. 
+Now it's time to add in some true functionality. For the purposes of this project, we're only going to be implementing a basic search function, but the `endpoints.py` file in the `twython` folder lists all of the options available to you for implementation. Play around and see what you can get to work!
+
+```python
+results = twitter.search(q='python')
+# Here, we are defining results as tweets containing the search term 'python'. Feel free to change this term to whatever you would like! 
+
+if results.get('statuses'):
+  for resutl in results['statuses']:
+    print result['text']
+    
+# Here, we are telling our script to return the results to the terminal so that we can read them. Later, we will print them to a CSV file. 
+```
