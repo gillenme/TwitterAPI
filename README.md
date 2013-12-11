@@ -79,7 +79,7 @@ OAUTH_TOKEN = '1234567890'
 OAUTH_TOKEN_SECRET = '1234567890'
 ```
 
-Now obviously '1234567890' isn't the actual code you need for the script to work, it's simply a placeholder. Refer back to your My Applications page on the Twitter Developer page. The naming Twitter uses for these authorization codes is a little confusing, but basically:
+Now obviously '1234567890' isn't the actual code you need for the script to work, it's simply a placeholder. Refer back to your My Applications page on the Twitter Developer page. The naming Twitter uses for these authorization codes is a little confusing, but to make it easier:
 
 APP_KEY = Consumer Key
 APP_SECRET = Consumer Secret
@@ -88,6 +88,7 @@ OAUTH_TOKEN_SECRET = Access Token Secret.
 
 Simply replace '1234567890' with the keys that correspond. You will need the single quotation marks to offset the key, so don't leave them out.
 
+After you have that information written in, add in the following: 
 
 ```python
 twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET, oauth_version=2)
