@@ -65,9 +65,9 @@ This will open a blank file. The first thing we need to do is import our setting
 
 ```python
 from twython import Twython
-import csv, json
+import csv
 
-# Here we are importing the Twython library we previously installed. We are also importing the csv and json programs so we can later save the data we're gathering from Twitter into an easy-to-read and use Excel file.
+# Here we are importing the Twython library we previously installed. We are also importing the csv module so we can later save the data we're gathering from Twitter into an easy-to-read and use Excel file.
 ```
 
 Make sure you save frequently. In fact, let's do it now. Ctrl+O is the command to save in Ubuntu. It will prompt you name your file, so let's name it `api.py`. The `.py` lets the machine know what language we're using and will also color code various commands for easier reading.
@@ -108,12 +108,35 @@ Now is a good time to save and run your script. If all goes well... Nothing will
 Now it's time to add in some true functionality. For the purposes of this project, we're only going to be implementing a basic search function, but the `endpoints.py` file in the `twython` folder lists all of the options available to you for implementation. Play around and see what you can get to work!
 
 ```python
-results = twitter.search(q='python')
+searchterm = 'Python'
+results = twitter.search(q=searchterm)
 # Here, we are defining results as tweets containing the search term 'python'. Feel free to change this term to whatever you would like! 
 
 if results.get('statuses'):
-  for resutl in results['statuses']:
+  for result in results['statuses']:
     print result['text']
     
 # Here, we are telling our script to return the results to the terminal so that we can read them. Later, we will print them to a CSV file. 
 ```
+
+Within the terminal, the text from 15 results from the search will be printed. This doesn't always have to be text - it can be usernames, location, number of followers, etc. Take a look at your options and tailor it to your needs!
+
+Finally, we want to be able to save these results and refer back to them. While we can't distribute them according to the Twitter TOS, we are allowed to save them for our own personal uses. In order to do this, we need to write our results to a file. Here, we'll be using CSV for its simplicity and use in other applications such as Text Mining programs like LightSIDE and Weka.
+
+```python
+#Open the CSV file. 'data.csv' can be renamed to whatever you would like. This is the filename it will save under.
+
+with open ('data.csv', 'w') as fp:
+	a = csv.writer(fp)
+	
+#At the top of the CSV file, we want to add in a row with columns labeled 'Search Term' and 'Tweet Text'.
+
+	a.writerow(('Search Term', 'Tweet Text'))
+	
+#For every result we pulled earlier, we want to print the search term attached to it as well as the text, making sure that it is in UTF-8 encoding so special characters will print and not return an error.
+
+	for result in results['statuses']:
+		text=[[searchterm, result['text'].encode('utf-8)]]
+		a.writerows((text))
+```
+		
