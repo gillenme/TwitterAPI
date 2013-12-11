@@ -63,5 +63,12 @@ This will open a blank file. The first thing we need to do is import our setting
 from twython import Twython
 import csv, json
 
-# Here we are importing the Twython library we previously installed. We are also importing the csv and json programs so we can later save the data we're gathering from Twitter into an easy-to-read and use Excel file.
+# Here we are importing the Twython library we previously installed.
+We are also importing the csv and json programs so we can later save 
+the data we're gathering from Twitter into an easy-to-read and use Excel file.
 ```
+
+Make sure you save frequently. In fact, let's do it now. Ctrl+O is the command to save in Ubuntu. It will prompt you name your file, so let's name it `api.py`. The `.py` lets the machine know what language we're using and will also color code various commands for easier reading.
+
+If you want to test your script from time to time, you will need to exit the nano file by using Ctrl+X. This will put you back in the terminal. From there, you'll type `python api.py` and the script will either run (sucess!) or fail (boo!). The easiest way to constantly edit and test will be to have two terminals open, one running nano and containing the python script and the other open to the basic terminal. However, you are free to do whatever works best for you!
+
